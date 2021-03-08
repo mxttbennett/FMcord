@@ -1,0 +1,9 @@
+{
+    "script": "bot.js",
+	"watch": true,
+    "ignore_watch": ["node_modules", "art_imgs", ".data"],
+    "watch_options": {
+        "followSymlinks": false
+    },
+    "name": "bot"
+}
