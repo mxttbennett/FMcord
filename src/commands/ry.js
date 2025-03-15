@@ -6,15 +6,19 @@ exports.run = async (client, message, args) => {
   const discordUser = message.author;
   var size = args.length;
   var year = args[0];
-  
+
 
   if (discordUser !== undefined) {
     var user = await fuser.rymById(discordUser.id);
-	var num = await fuser.rppById(discordUser.id);
-	//await message.channel.send(user);
+    var num = await fuser.rppById(discordUser.id);
+
+    if (num === 0) {
+      num = 25;
+    }
+    //await message.channel.send(user);
 
     if (user) {
-	await message.channel.send(`\`${discordUser.username}'s\` ratings from ${year}: https://rateyourmusic.com/collection/${user}/strm_relyear,ss.rd.r0.5-5.0,n${num}/${year}`);
+      await message.channel.send(`\`${discordUser.username}'s\` ratings from ${year}: https://rateyourmusic.com/collection/${user}/strm_relyear,ss.rd.r0.5-5.0,n${num}/${year}`);
     } else {
       await message.reply(`\`${discordUser.username}\` is not logged into rym.`);
     }

@@ -1,14 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
-  const Time = sequelize.define(`time`, {
-    ms: DataTypes.STRING,
-	isArtist: DataTypes.STRING,
-	isAlbum: DataTypes.STRING,
-	guildID: DataTypes.STRING
+  return sequelize.define('times', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    ms: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isArtist: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isAlbum: {
+      type: DataTypes.STRING,
+      defaultValue: 'false'
+    },
+    guildID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false
+    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {
-    indexes: [{
-      unique: true,
-      fields: [`guildID`, `userID`, `artistName`]
-    }]
+    indexes: []
   });
-  return Time;
 };

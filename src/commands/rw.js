@@ -4,15 +4,19 @@ exports.run = async (client, message, args) => {
   const fuser = new fetchuser(client, message);
   const discordUser = message.author;
   var genre = args.join(` `);
-  
+
 
   if (discordUser !== undefined) {
     var user = await fuser.rymById(discordUser.id);
-	var num = await fuser.rppById(discordUser.id);
-	//await message.channel.send(user);
+    var num = await fuser.rppById(discordUser.id);
+
+    if (num === 0) {
+      num = 25;
+    }
+    //await message.channel.send(user);
 
     if (user) {
-	await message.channel.send(`\`${discordUser.username}'s\` wishlist: https://rateyourmusic.com/collection/${user}/wishlist,n${num}`);
+      await message.channel.send(`\`${discordUser.username}'s\` wishlist: https://rateyourmusic.com/collection/${user}/wishlist,n${num}`);
     } else {
       await message.reply(`\`${discordUser.username}\` is not logged into rym.`);
     }

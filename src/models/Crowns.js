@@ -1,20 +1,49 @@
 module.exports = (sequelize, DataTypes) => {
-  const Crowns = sequelize.define(`crowns`, {
-    guildID: DataTypes.STRING,
-    userID: DataTypes.STRING,
-    artistName: DataTypes.STRING,
-    artistPlays: DataTypes.STRING,
-	serverPlays: DataTypes.STRING,
-	serverListeners: DataTypes.STRING,
-	artistURL: DataTypes.STRING,
-	artistImgURL: DataTypes.STRING,
-	contribID: DataTypes.STRING,
-	tinyURL: DataTypes.STRING
+  const Crowns = sequelize.define('crowns', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    guildID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    userID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    artistName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    artistPlays: {
+      type: DataTypes.STRING
+    },
+    serverPlays: {
+      type: DataTypes.STRING
+    },
+    serverListeners: {
+      type: DataTypes.STRING
+    },
+    artistURL: {
+      type: DataTypes.STRING
+    },
+    artistImgURL: {
+      type: DataTypes.STRING
+    },
+    contribID: {
+      type: DataTypes.STRING
+    },
+    tinyURL: {
+      type: DataTypes.STRING
+    }
   }, {
     indexes: [{
       unique: true,
-      fields: [`guildID`, `userID`, `artistName`]
-    }]
+      fields: ['guildID', 'artistName']
+    }],
+    timestamps: true
   });
   return Crowns;
 };

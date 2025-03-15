@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-  const ACrowns = sequelize.define(`acrowns`, {
+  const ACrowns = sequelize.define(`guess`, {
     guildID: DataTypes.STRING,
     userID: DataTypes.STRING,
     albumName: DataTypes.STRING,
-	artistName: DataTypes.STRING,
+    artistName: DataTypes.STRING,
     albumPlays: DataTypes.STRING
   }, {
     indexes: [{

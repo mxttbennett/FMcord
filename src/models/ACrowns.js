@@ -1,19 +1,47 @@
 module.exports = (sequelize, DataTypes) => {
-  const ACrowns = sequelize.define(`acrowns`, {
-    guildID: DataTypes.STRING,
-    userID: DataTypes.STRING,
-    albumName: DataTypes.STRING,
-	artistName: DataTypes.STRING,
-    albumPlays: DataTypes.STRING,
-	serverPlays: DataTypes.STRING,
-	serverListeners: DataTypes.STRING,
-	albumURL: DataTypes.STRING,
-	tinyURL: DataTypes.STRING
+  const ACrowns = sequelize.define('acrowns', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    guildID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    userID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    albumName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    artistName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    albumPlays: {
+      type: DataTypes.STRING
+    },
+    serverPlays: {
+      type: DataTypes.STRING
+    },
+    serverListeners: {
+      type: DataTypes.STRING
+    },
+    albumURL: {
+      type: DataTypes.STRING
+    },
+    tinyURL: {
+      type: DataTypes.STRING
+    }
   }, {
     indexes: [{
       unique: true,
-      fields: [`guildID`, `userID`, `albumName`, `artistName`]
-    }]
+      fields: ['guildID', 'artistName', 'albumName']
+    }],
+    timestamps: true
   });
   return ACrowns;
 };

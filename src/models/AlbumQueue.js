@@ -1,21 +1,50 @@
 module.exports = (sequelize, DataTypes) => {
-  const AlbumQueue = sequelize.define(`albumqueue`, {
-    guildID: DataTypes.STRING,
-	guildName: DataTypes.STRING,
-	guildUserIDs: DataTypes.STRING,
-	guildUsers: DataTypes.STRING,
-    userID: DataTypes.STRING,
-	userName: DataTypes.STRING,
-	artistName: DataTypes.STRING,
-	albumName: DataTypes.STRING,
-	chartType: DataTypes.STRING,
-	crownHolder: DataTypes.STRING,
-	crownPlays: DataTypes.STRING
+  return sequelize.define('albumqueue', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    guildID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    guildName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    guildUserIDs: {
+      type: DataTypes.STRING
+    },
+    guildUsers: {
+      type: DataTypes.STRING
+    },
+    userID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    artistName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    albumName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    chartType: {
+      type: DataTypes.STRING
+    },
+    crownHolder: {
+      type: DataTypes.STRING
+    },
+    crownPlays: {
+      type: DataTypes.STRING
+    }
   }, {
-    indexes: [{
-      unique: false,
-      fields: [`guildID`, `userID`, `albumName`, `artistName`]
-    }]
+    timestamps: true
   });
-  return AlbumQueue;
 };
